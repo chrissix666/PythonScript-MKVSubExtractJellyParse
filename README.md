@@ -6,7 +6,21 @@ The MKV Subtitle Extractor is a Python tool for extracting subtitles from .mkv f
 
 Design Philosophy:
 
-The tool aims for clarity, reproducibility, and Jellyfin compatibility. Each track gets a unique, deterministic filename based on its metadata and track ID. The .Extracted tag marks container-extracted tracks. External or OpenSubtitles tracks use .External or .OpenSubtitles. Counters are appended to .Extracted when tracks cannot be distinguished by language, flags, or type (common in pt/pt-br, Spanish accents, Chinese variants). This ensures reproducible, human-readable filenames.
+The MKV Subtitle Extractor is a tool for managing subtitles in MKV files with the goal of ensuring that all tracks are correctly interpreted by Jellyfin and displayed in an organized and readable way. MKV files often contain multiple subtitle tracks that share languages, flags, or other properties, which can lead to confusion or misordering if subtitles are extracted or renamed arbitrarily. To address this, the tool enforces a strict filename convention that encodes key metadata in a specific order: the base filename, followed by optional default flag, language code, hearing-impaired or SDH indicators, forced track flag, a source identifier tag, and, if necessary, a counter for duplicate tracks.
+
+The first step in the workflow is analyzing the MKV container with MKVMerge to generate JSON metadata. Each subtitle track is examined for its ID, codec, language, default and forced flags, and track name. Hearing-impaired or SDH tracks are detected using pattern matching in the track name. The extracted metadata is then normalized using a language mapping file to ensure consistent language codes. Tracks without language information are reported separately, as well as those that have three-letter ISO codes.
+
+After collecting metadata, filenames are generated according to the convention: (basename)[.default][.(lang)][.(hi)][.forced].Extracted[(counter)].(ext). The order of the components is critical. The base filename ensures the subtitle is associated with the correct video. The default flag appears first so Jellyfin can identify and select the main subtitle track automatically. The language code follows, allowing Jellyfin to parse ISO codes consistently. The optional HI/SDH flag comes next, maintaining visual association with the language. The forced flag signals that the subtitle should appear automatically in relevant scenes. The source identifier tag follows: .Extracted for container-extracted tracks, .External for manually collected tracks, and no tag or default naming for OpenSubtitles downloads. Finally, a counter is added if multiple tracks would otherwise have identical names, ensuring uniqueness.
+
+The .Extracted tag identifies subtitles that have been extracted from the container. It allows these tracks to be distinguished from external or downloaded subtitles and ensures that Jellyfin displays them clearly. The counter appended to .Extracted is necessary when multiple tracks share the same language or flags and cannot otherwise be differentiated. This situation frequently occurs with Portuguese, which has variants for Portugal and Brazil, Spanish tracks with regional accents, or Chinese tracks where Simplified and Traditional versions exist. Since Jellyfin only parses standard ISO language codes, sublanguage distinctions are not recognized, making the counter the only reliable fallback.
+
+Manually collected or previously archived subtitles are labeled with the .External tag. This tag is capitalized deliberately because Jellyfin does not parse custom flags but instead displays them exactly as written in the UI. Only one custom flag is allowed per file. Using .External allows users to maintain curated subtitles separately from container-extracted tracks or OpenSubtitles downloads, preventing accidental overwrites and keeping the library organized.
+
+Subtitles obtained via OpenSubtitles are usually saved directly in the media folder, often without any tag or flag. They can overwrite existing files if not managed carefully. By combining .Extracted for container tracks, .External for curated external tracks, and OpenSubtitles downloads, all three “worlds” of subtitles can coexist in the same folder. Each source remains distinguishable, and the filenames reflect origin, language, flags, and any necessary counters. Internal or already embedded tracks remain the base layer and can be left untouched unless extraction is required.
+
+This approach ensures that the order of tracks in Jellyfin is consistent and meaningful. Default tracks appear first, followed by tracks in other languages, HI/SDH tracks, and forced tracks. Counters resolve duplicates, and the filename tags make it possible to visually distinguish container-extracted, external, and OpenSubtitles subtitles. The system maintains clarity, avoids overwriting, and provides a reproducible method for organizing subtitles, even in large libraries with complex multilingual content.
+
+Following this workflow and naming convention ensures that all subtitle sources can coexist, remain organized, and be displayed correctly in Jellyfin, while users retain control over which tracks are used, which are prioritized, and how duplicates are handled. The deterministic structure, clear tagging, and strict ordering of flags provide a consistent and reliable method for managing subtitles in complex multilingual libraries.
 
 
 Naming Convention & Filename structure:
@@ -26,7 +40,6 @@ Components:
 Key Notes:
 - .Extracted improves Jellyfin UI readability over numeric-only counters.
 - Counters appear only for tracks that cannot be distinguished by Jellyfin.
-- Supports multiple sources simultaneously: Extracted, External, OpenSubtitles.
 - Prevents overwriting of previously collected subtitles.
 
 Parsing & Workflow:

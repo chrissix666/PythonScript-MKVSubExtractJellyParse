@@ -38,7 +38,7 @@ Components:
 - (ext): File extension based on codec (.srt, .ass, .sub/.idx, .sup)
 
 Key Notes:
-- .Extracted improves Jellyfin UI readability over numeric-only counters.
+- .Extracted[(counter)] improves Jellyfin UI readability over numeric-only counters.
 - Counters appear only for tracks that cannot be distinguished by Jellyfin.
 - Prevents overwriting of previously collected subtitles.
 

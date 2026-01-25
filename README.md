@@ -86,18 +86,28 @@ Text Tracks:
 - Movie.en.Extracted.srt                     → English
 - Movie.en.cc.Extracted.srt                 → English, HI/CC
 - Movie.en.forced.Extracted.srt              → English, Forced
+- Movie.forced.Extracted.srt                 → no language Data, Forced
 - Movie.default.en.hi.Extracted.srt         → Default, English, HI/HI
 - Movie.default.en.forced.Extracted.srt      → Default, English, Forced
-- Movie.pt.Extracted.srt                     → Portuguese
-- Movie.pt.Extracted1.srt                    → Duplicate Portuguese
-- Movie.es.Extracted.srt                     → Spanish
-- Movie.es.Extracted1.srt                    → Duplicate Spanish
+- Movie.default.forced.Extracted.srt         → Default, no langauge Data, Forced
+- Movie.pt.Extracted.srt                     → Portuguese (first ID Track)
+- Movie.pt.Extracted1.srt                    → Duplicate Portuguese (next ID Track)
+- Movie.es.Extracted.srt                     → Spanish (first ID Track)
+- Movie.es.Extracted1.srt                    → Duplicate Spanish (next ID Track)
+- Movie.Extracted.srt                        → no Data at all
+- Movie.Extracted1.srt                        → no Data at all mutliple Tracks (worst case scenario)
 
 Image Tracks:
 - Movie.en.Extracted.sub/.idx                → English VOBSUB
 - Movie.pt.Extracted.sub/.idx                → Portuguese VOBSUB
 - Movie.en.sdh.Extracted.sup                 → English PGS, HI/SDH
 - Movie.default.en.forced.Extracted.sup      → Default + Forced English PGS
+
+Subtitles from Other Sources:
+- Movie.en.sdh.External.sup                 → .External Tag / Original Subtitle from Release Group or other external Source
+- Movie.de.cc.External.srt                  → .External Tag / Original Subtitle from Release Group or other external Source
+- Movie.default.en.forced.srt               → no Tag / VANILLA NAMING / base naming without Tag interacting with Subtitle Addons
+- Movie.de.forced.sub/.idx                  → no Tag / VANILLA NAMING / base naming without Tag interacting with Subtitle Addons
 
 License:
 MIT

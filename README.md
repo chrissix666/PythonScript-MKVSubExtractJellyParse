@@ -1,21 +1,17 @@
 MKV Subtitle Extractor – Jellyfin-Aware Naming
 
 Overview:
-
 The MKV Subtitle Extractor is a Python tool designed to extract subtitles from .mkv files while preserving all metadata in a way that Jellyfin can reliably parse. Many MKV containers contain multiple subtitle tracks that share the same language, flags, or other characteristics, which can confuse standard extraction tools. This extractor handles both text-based (.srt, .ass, .ssa) and image-based (.sub/.idx, .sup) subtitles and generates human- and Jellyfin-friendly filenames reflecting language, default/forced flags, and hearing-impaired indicators. It is intended for libraries with multiple subtitle sources, including container-embedded subtitles, manually collected subtitles (.External), and automatically downloaded subtitles (OpenSubtitles plugin). By using consistent naming and custom tags, all tracks can coexist without overwriting or confusing Jellyfin.
 
 Design Philosophy:
-
 The primary goals are clarity, reproducibility, and Jellyfin compatibility. Each track is assigned a unique filename based on track metadata and ID. The .Extracted tag identifies container-extracted tracks. External or OpenSubtitles tracks use .External or .OpenSubtitles, allowing multiple sources to coexist in the same folder. Counters are appended to .Extracted when tracks cannot be distinguished by Jellyfin due to duplicate languages, multiple Spanish accents, Portuguese variants (pt/pt-br), or Chinese variants (zh-Hans/zh-Hant). This ensures deterministic, reproducible, and human-readable filenames.
 
 Naming Convention:
-
 Filenames follow this structure:
 
 <basename>[.default][.<lang>][.<hi>][.forced].Extracted[<counter>].<ext>
 
 Components:
-
 - <basename>: Video filename without .mkv
 - .default: Track is flagged as default
 - .<lang>: Normalized language code from mapping.txt
@@ -23,17 +19,15 @@ Components:
 - .forced: Forced subtitle track
 - .Extracted: Custom tag indicating container extraction
 - [<counter>]: Optional numeric counter for indistinguishable duplicates
-- .<ext>: File extension based on codec (.srt, .ass, .sub/.idx, .sup)
+- <ext>: File extension based on codec (.srt, .ass, .sub/.idx, .sup)
 
 Key Notes:
-
 - .Extracted improves Jellyfin UI readability over raw counters.
 - Counters only appear for tracks indistinguishable by language, flags, or type.
 - Multiple sources (Extracted, External, OpenSubtitles) can coexist.
 - Prevents overwriting previously collected or downloaded subtitles.
 
 Parsing & Workflow:
-
 1. Track Analysis:
    - Uses `mkvmerge -J` to extract JSON metadata.
    - Collects per-track info: ID, language, name, codec, default/forced flags.

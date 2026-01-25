@@ -29,10 +29,10 @@ Naming Convention & Filename structure:
 
 Components:
 - (basename): Video filename without .mkv
-- .default: Track is flagged as default
-- .(lang): Normalized language code from mapping.txt
-- .(hi): Hearing-impaired / SDH / CC
-- .forced: Forced subtitle track
+- [.default]: Track is flagged as default
+- [.(lang)]: Normalized language code from mapping.txt
+- [.(hi)]: Hearing-impaired / SDH / CC
+- [.forced]: Forced subtitle track
 - .Extracted: Container-extracted tag
 - [(counter)]: Optional counter for indistinguishable tracks
 - (ext): File extension based on codec (.srt, .ass, .sub/.idx, .sup)

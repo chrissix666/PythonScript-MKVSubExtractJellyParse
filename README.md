@@ -1,13 +1,15 @@
 MKV Subtitle Extractor – Jellyfin-Aware Naming
 
 Overview:
+
 The MKV Subtitle Extractor is a Python tool for extracting subtitles from .mkv files while preserving metadata in a Jellyfin-compatible way. Many MKVs contain multiple subtitle tracks with overlapping languages, flags, or properties. This tool handles text (.srt, .ass, .ssa) and image (.sub/.idx, .sup) tracks and generates clear filenames reflecting language, default/forced flags, and hearing-impaired indicators. Ideal for libraries with container subtitles, manually collected subtitles (.External), and OpenSubtitles downloads. Consistent naming and custom tags allow coexistence without overwriting.
 
 Design Philosophy:
+
 The tool aims for clarity, reproducibility, and Jellyfin compatibility. Each track gets a unique, deterministic filename based on its metadata and track ID. The .Extracted tag marks container-extracted tracks. External or OpenSubtitles tracks use .External or .OpenSubtitles. Counters are appended to .Extracted when tracks cannot be distinguished by language, flags, or type (common in pt/pt-br, Spanish accents, Chinese variants). This ensures reproducible, human-readable filenames.
 
-Naming Convention:
-Filename structure:
+
+Naming Convention & Filename structure:
 
 (basename)[.default][.(lang)][.(hi)][.forced].Extracted[(counter)].(ext)
 

@@ -1,0 +1,1 @@
+# paths.txt should be in the same folder as the script. Add the folder paths that the script should scan recursively. Multiple paths can be separated by line breaks.

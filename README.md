@@ -78,7 +78,7 @@ Usage:
 1. Install MKVToolNix and Python 3; ensure both are in system PATH.
 2. Create a project folder.
 3. Add mapping.txt (language normalization) and paths.txt (one folder per line, recursive).
-4. Run: python mkv_subtitle_extractor.py
+4. Run: python MKVSubExtractJellyParse.py
 5. Select subtitle filter: All / Text / Image
 6. Select mode: Simulate / Extract
 7. Review simulation output before extraction.

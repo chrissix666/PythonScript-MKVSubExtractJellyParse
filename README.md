@@ -72,9 +72,9 @@ Counter Logic:
 
 Usage:
 1. Install MKVToolNix and Python 3; ensure both are in system PATH.
-2. Create a project folder.
-3. Add mapping.txt (language normalization) and paths.txt (one folder per line, recursive).
-4. Run: python MKVSubExtractJellyParse.py
+2. Create a project folder and put the MKVSubExtractJellyParse.py in there.
+3. In the same folder put the mapping.txt (language normalization) and paths.txt (one folderpath per line, recursive).
+4. Run: python MKVSubExtractJellyParse.py (with console or by double click with a .bat shortcut)
 5. Select subtitle filter: All / Text (.srt) / Image (.sub/.idx, .sup)
 6. Select mode: Simulate / Extract
 7. Review simulation output before extraction.
@@ -89,19 +89,21 @@ Text Tracks:
 - Movie.forced.Extracted.srt                 → no language Data, Forced
 - Movie.default.en.hi.Extracted.srt         → Default, English, HI/HI
 - Movie.default.en.forced.Extracted.srt      → Default, English, Forced
-- Movie.default.forced.Extracted.srt         → Default, no langauge Data, Forced
+- Movie.default.forced.Extracted.srt         → Default, no langauge Data, Forced (this and similar variants can happen even if it makes no sense, but we go strictly to all metadata we get from the .mkv Track ID's)
 - Movie.pt.Extracted.srt                     → Portuguese (first ID Track)
 - Movie.pt.Extracted1.srt                    → Duplicate Portuguese (next ID Track)
 - Movie.es.Extracted.srt                     → Spanish (first ID Track)
 - Movie.es.Extracted1.srt                    → Duplicate Spanish (next ID Track)
 - Movie.Extracted.srt                        → no Data at all
-- Movie.Extracted1.srt                        → no Data at all mutliple Tracks (worst case scenario)
+- Movie.Extracted1.srt                        → no Data at all, mutliple Tracks (worst case scenario)
 
 Image Tracks:
 - Movie.en.Extracted.sub/.idx                → English VOBSUB
 - Movie.pt.Extracted.sub/.idx                → Portuguese VOBSUB
 - Movie.en.sdh.Extracted.sup                 → English PGS, HI/SDH
 - Movie.default.en.forced.Extracted.sup      → Default + Forced English PGS
+
+(Even though it’s not excluded in the code, a file has never been tagged with both [hi] and [forced] at the same time on testing)
 
 Subtitles from Other Sources:
 - Movie.en.sdh.External.sup                 → .External Tag / Original Subtitle from Release Group or other external Source

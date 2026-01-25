@@ -90,7 +90,7 @@ Text Tracks:
 - Movie.forced.Extracted.srt                 → no language Data, Forced
 - Movie.default.en.hi.Extracted.srt         → Default, English, HI/HI
 - Movie.default.en.forced.Extracted.srt      → Default, English, Forced
-- Movie.default.forced.Extracted.srt         → Default, no langauge Data, Forced (this and similar variants can happen even if it makes no sense, but we go strictly to all metadata we get from the .mkv Track ID's)
+- Movie.default.forced.Extracted.srt         → Default, no langauge Data, Forced (this and similar variants can happen even if it makes no sense, but we go strictly to convention & all metadata we get from the .mkv Track ID's)
 - Movie.pt.Extracted.srt                     → Portuguese (first ID Track)
 - Movie.pt.Extracted1.srt                    → Duplicate Portuguese (next ID Track)
 - Movie.es.Extracted.srt                     → Spanish (first ID Track)

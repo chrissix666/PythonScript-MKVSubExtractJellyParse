@@ -48,25 +48,8 @@ Parsing & Workflow:
    - Extraction: mkvextract writes files to disk.
 5. Post-run reporting:
    - Tracks with missing language codes.
-   - Tracks with 3-letter codes.
+   - Tracks with 3-letter codes (not parseable)
    - Summary of text vs. image tracks.
-
-Workflow Diagram (ASCII):
-
-MKV Container
- └─ Track Extraction (mkvmerge -J)
-     └─ Metadata Collection (language, name, codec, flags, HI/SDH)
-          |
-          v
- Language Mapping & Normalization (mapping.txt)
-          |
-          v
- Filename Assignment ((basename)[.default][.(lang)][.(hi)][.forced].Extracted[(counter)].(ext))
-          |
-          v
- Output
-  ├─ Simulation → print filenames
-  └─ Extraction → save subtitle files
 
 Counter Logic:
 - Applied when multiple tracks share the same (lang), flags, or codec.

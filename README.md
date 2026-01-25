@@ -65,7 +65,7 @@ Parsing & Workflow:
    - Summary of text vs. image tracks.
 
 Counter Logic:
-- Applied when multiple tracks share the same (lang), flags, or codec.
+- Applied when multiple tracks share the same (lang), flags, or codec or simple no data.
 - Common in pt/pt-br, Spanish with accents, Chinese variants.
 - Deterministic based on track ID.
 - Ensures uniqueness in Jellyfin even when sublanguage distinctions cannot be parsed.

@@ -60,8 +60,8 @@ Parsing & Workflow:
    - Simulation: Prints filenames for review.
    - Extraction: mkvextract writes files to disk.
 5. Post-run reporting:
-   - Tracks with missing language codes.
-   - Tracks with 3-letter codes (not parseable)
+   - Tracks with missing language codes. (no (lang) value created on this subtitles, just for Review bad metadata .mkv files) - #about 1%, 25 out of 2500 were complete faulty on testing#
+   - left Tracks with not parseble 3-letter codes (for Review bad metadata .mkv files, not parseable from mappings.txt, the value is transferred 1:1 as a fallback) - #i had 2 matches out of 2500 on testing#
    - Summary of text vs. image tracks.
 
 Counter Logic:

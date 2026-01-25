@@ -77,7 +77,8 @@ Usage:
 4. Run: python MKVSubExtractJellyParse.py (with console or by double click with a .bat shortcut)
 5. Select subtitle filter: All / Text (.srt) / Image (.sub/.idx, .sup)
 6. Select mode: Simulate / Extract
-7. Review simulation output before extraction.
+7. Review simulation output (+ Post-run reporting) before extraction.
+8. Adjust the code behave to your needs (with AI also simple for beginners) and/or make a comment or code commit helping bug fixing.
 
 Example Filenames (some combinations):
 

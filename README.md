@@ -35,7 +35,7 @@ Components:
 - [.forced]: Forced subtitle track
 - .Extracted: Container-extracted tag
 - [(counter)]: Optional counter for indistinguishable tracks
-- (ext): File extension based on codec (.srt, .ass, .sub/.idx, .sup)
+- (ext): File extension based on codec (.srt, .sub/.idx, .sup)
 
 Key Notes:
 - .Extracted[(counter)] improves Jellyfin UI readability over numeric-only counters.
@@ -75,7 +75,7 @@ Usage:
 2. Create a project folder.
 3. Add mapping.txt (language normalization) and paths.txt (one folder per line, recursive).
 4. Run: python MKVSubExtractJellyParse.py
-5. Select subtitle filter: All / Text / Image
+5. Select subtitle filter: All / Text (.srt) / Image (.sub/.idx, .sup)
 6. Select mode: Simulate / Extract
 7. Review simulation output before extraction.
 

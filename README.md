@@ -30,7 +30,7 @@ Naming Convention & Filename structure:
 Components:
 - (basename): Video filename without .mkv
 - [.default]: Track is flagged as default
-- [.(lang)]: Normalized language code from mapping.txt -> Convert all ISO 639-2 codes, including alternatives and legacy variants, to ISO 639-1, because Jellyfin parses those most reliably. Not all of them will be parsed, but they will at least be recognized as a language and shown in the correct tag column. Although this has been widely discussed and requested, Jellyfin does not support language parsing for sublanguages defined in BCP 47, which is common for Portuguese (e.g., pt-BR, Portuguese-Brazilian), Spanish, and Chinese. Since this is not possible, we have to work with a counter.
+- [.(lang)]: Normalized language code from mapping.txt -> Convert all ISO 639-2 codes, including alternatives and legacy variants, to ISO 639-1, because Jellyfin parses those most reliably. Not all of them will be parsed, but they will at least be recognized as a language and shown in the correct tag column. Although this has been widely discussed and requested, Jellyfin does not support language parsing for sublanguages defined in BCP 47, which is common for Portuguese (e.g., pt-br, Portuguese-Brazilian, ... en-us, en-uk, de-at), Spanish, and Chinese. Since this is not possible, we have to work with a counter.
 - [.(hi)]: Hearing-impaired / HI / SDH / CC
 - [.forced]: Forced subtitle track
 - .Extracted: Container-extracted tag

@@ -1,6 +1,7 @@
 MKV Subtitle Extractor – Jellyfin-Aware Naming
 
-Tested on Windows 11, Chrome Browser for Jellyfin Web
+Tested on Windows 11, skript uses Python and MKVToolnix (both added to path in windows)
+
 
 Overview:
 

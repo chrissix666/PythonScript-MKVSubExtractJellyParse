@@ -36,7 +36,7 @@ Components:
 - [.(lang)]: Normalized language code from mapping.txt -> Convert all ISO 639-2 codes, including alternatives and legacy variants, to ISO 639-1, because Jellyfin parses those most reliably. Not all of them will be parsed, but they will at least be recognized as a language and shown in the correct tag column. Although this has been widely discussed and requested, Jellyfin does not support language parsing for sublanguages defined in BCP 47, which is common for Portuguese (e.g., pt-br, Portuguese-Brazilian, ... en-us, en-uk, de-at), Spanish, and Chinese. Since this is not possible, we have to work with a counter (from the file Track ID upwards on naming collisions).
 - [.(hi)]: Hearing-impaired / HI / SDH / CC
 - [.forced]: Forced subtitle track
-- .Extracted: Container-extracted tag
+- .Extracted: Container-extracted tag (erase from code when not needed. Personal use see Design Philosophy; also use "*.External" for  original Scene Release subtitles and "empty", without Tag on OpenSubtitles with Addon)
 - [(counter)]: Optional counter for indistinguishable tracks
 - (ext): File extension based on codec (.srt, .sub/.idx, .sup)
 

@@ -1,3 +1,5 @@
+Thanks for the fixes & credits to [LiamKarlMitchell](https://github.com/LiamKarlMitchell)
+---
 MKV Subtitle Extractor – Jellyfin-Aware Naming
 
 Tested on Windows 11, skript uses Python and MKVToolnix (both added to path in windows)

@@ -30,6 +30,7 @@ TEXT_SUB_CODECS = {"S_TEXT/UTF8", "S_TEXT/ASS", "S_TEXT/SSA"}
 # ==========================
 LANG_NONE_TRACKS = []
 LANG_3CHAR_TRACKS = []
+LANG_FILTER = None
 
 # ==========================
 # HELPER FUNCTIONS
@@ -134,11 +135,16 @@ def analyze_subs(mkv_path, lang_mapping, subtitle_filter):
             hi_flag = re.search(r"hi|sdh|cc", name, re.I).group(0).lower()
 
         typ = "text" if codec in TEXT_SUB_CODECS else ("image" if codec=="S_VOBSUB" else "image")
-        exts = [".srt"] if typ=="text" else [".sub",".idx"] if codec=="S_VOBSUB" else [".sup"]
+        if typ=="text":
+            exts = [".ass"] if codec in ("S_TEXT/ASS","S_TEXT/SSA") else [".srt"]
+        else:
+            exts = [".sub",".idx"] if codec=="S_VOBSUB" else [".sup"]
 
         if subtitle_filter=="text" and typ!="text":
             continue
         if subtitle_filter=="bild" and typ!="image":
+            continue
+        if LANG_FILTER and lang != LANG_FILTER:
             continue
 
         tracks.append({
@@ -223,7 +229,11 @@ def process_mkv(mkv_path, lang_mapping, subtitle_filter, mode):
 # MAIN
 # ==========================
 def main():
+    global LANG_FILTER
     lang_mapping = load_mapping("mapping.txt")
+
+    lang_in = input("Language filter (e.g. en), empty = all: ").strip().lower()
+    LANG_FILTER = lang_in or None
 
     print("Select subtitle filter:")
     print("  1) all")

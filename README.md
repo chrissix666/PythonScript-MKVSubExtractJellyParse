@@ -1,4 +1,5 @@
 Thanks for the fixes & credits to [LiamKarlMitchell](https://github.com/LiamKarlMitchell)
+
 ---
 MKV Subtitle Extractor – Jellyfin-Aware Naming
 
